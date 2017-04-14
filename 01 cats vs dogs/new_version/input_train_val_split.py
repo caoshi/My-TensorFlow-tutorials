@@ -69,8 +69,10 @@ def get_files(file_dir, ratio):
     all_label_list = temp[:, 1]
     
     n_sample = len(all_label_list)
-    n_val = math.ceil(n_sample*ratio) # number of validation samples
-    n_train = n_sample - n_val # number of trainning samples
+    #n_val = math.ceil(n_sample*ratio) # number of validation samples
+    #n_train = n_sample - n_val # number of trainning samples
+    
+    n_train = int(n_sample-n_sample*ratio) #  if n_train is a float type, the line 77 will throw a error at some platform.
     
     tra_images = all_image_list[0:n_train]
     tra_labels = all_label_list[0:n_train]
